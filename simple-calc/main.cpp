@@ -4,9 +4,12 @@
 #include "lexer.h"
 #include "parser.h"
 
+const char *TipInput = " input > ";
+const char *TipResult = "result > ";
+
 void PrintCalcResult(Tok *AST) {
     if (AST == nullptr) return;
-    fprintf(stderr, "result > %lf\n", AST->Calc());
+    fprintf(stderr, "%s%lf\n", TipResult, AST->Calc());
     delete AST;
 }
 
@@ -22,7 +25,7 @@ void MainLoop(Parser parser) {
                 break;
             }
             case '?': {
-                Print(" input > ");
+                Print(TipInput);
                 parser.GetNextToken();
                 break;
             }
@@ -39,7 +42,7 @@ int main(int argc, char *argv[]) {
     PrintLn("a simple expression calculator by MaxXing");
     PrintLn("based on a recursive descent parser");
     PrintLn("");
-    Print(" input > ");
+    Print(TipInput);
 
     Lexer lexer;
     Parser parser(lexer);
