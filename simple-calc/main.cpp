@@ -13,7 +13,7 @@ void PrintCalcResult(Tok *AST) {
     delete AST;
 }
 
-void MainLoop(Parser parser) {
+void MainLoop(Parser &parser) {
     for (;;) {
         switch (parser.CurrentToken()) {
             case TokEOF: {
@@ -37,7 +37,7 @@ void MainLoop(Parser parser) {
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
     PrintLn("");
     PrintLn("a simple expression calculator by MaxXing");
     PrintLn("based on a recursive descent parser");

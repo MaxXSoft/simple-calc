@@ -13,7 +13,7 @@ public:
 
 class NumberTok : public Tok {
 public:
-    NumberTok(double val) : Val(val) {}
+    NumberTok(double Val) : Val(Val) {}
 
     virtual double Calc();
 
@@ -23,7 +23,7 @@ private:
 
 class BinTok : public Tok {
 public:
-    BinTok(std::string op, Tok *lhs, Tok *rhs) : Op(op), LHS(lhs), RHS(rhs) {}
+    BinTok(const std::string &Op, Tok *LHS, Tok *RHS) : Op(Op), LHS(LHS), RHS(RHS) {}
     virtual ~BinTok() { delete LHS; delete RHS; }
 
     virtual double Calc();
@@ -35,7 +35,7 @@ private:
 
 class Parser {
 public:
-	Parser(Lexer theLexer) : TheLexer(theLexer) {}
+	Parser(const Lexer &TheLexer) : TheLexer(TheLexer) {}
 
 	int GetNextToken();
 	Tok *ParseExpr();
