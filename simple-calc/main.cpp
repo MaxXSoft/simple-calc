@@ -7,13 +7,13 @@
 const char *TipInput = " input > ";
 const char *TipResult = "result > ";
 
-void PrintCalcResult(Tok *AST) {
+static void PrintCalcResult(Tok *AST) {
     if (AST == nullptr) return;
     fprintf(stderr, "%s%lf\n", TipResult, AST->Calc());
     delete AST;
 }
 
-void MainLoop(Parser &parser) {
+static void MainLoop(Parser &parser) {
     for (;;) {
         switch (parser.CurrentToken()) {
             case TokEOF: {

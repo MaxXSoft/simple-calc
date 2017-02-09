@@ -31,8 +31,8 @@ const int BinOpPrec[] = {
     20, 20 // , 10
 };
 
-bool IsBinOp(const char *TokTest) {
-    for (auto CurBinOp : BinOps) {
+static bool IsBinOp(const char *TokTest) {
+    for (const auto &CurBinOp : BinOps) {
         if (!strcmp(CurBinOp, TokTest)) {
             return true;
         }
@@ -40,13 +40,18 @@ bool IsBinOp(const char *TokTest) {
     return false;
 }
 
-bool IsBinOp(int TokTest) {
-    for (auto CurBinOp : BinOps) {
+static bool IsBinOp(int TokTest) {
+    for (const auto &CurBinOp : BinOps) {
         if (CurBinOp[0] == TokTest) {
             return true;
         }
     }
     return false;
+}
+
+static int LexerError(const char *Description) {
+    fprintf(stderr, "error(lexer): %s\n", Description);
+    return TokErr;
 }
 
 int GetBinOpIndex(std::string Op) {
@@ -56,11 +61,6 @@ int GetBinOpIndex(std::string Op) {
             return i;
         }
     }
-    return TokErr;
-}
-
-int LexerError(const char *Description) {
-    fprintf(stderr, "error(lexer): %s\n", Description);
     return TokErr;
 }
 

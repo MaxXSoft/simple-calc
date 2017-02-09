@@ -25,7 +25,7 @@ result > 2.000000
 The result is 2.
 
 ### Supported Operators
-This calculator supports only the following binary operators：
+This calculator supports only the following operators：
 * **Brackets:** (, )
 * **Mathematical operation:** **, *, /, %, +, -
 * **Bit operation:** <<, >>, &, ^, |

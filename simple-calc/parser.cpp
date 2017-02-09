@@ -6,7 +6,7 @@
 
 #include "lexer.h"
 
-Tok *ParserError(const char *Description) {
+static Tok *ParserError(const char *Description) {
     fprintf(stderr, "error(parser): %s\n", Description);
     return nullptr;
 }
